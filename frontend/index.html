@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Crop Advisor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #eef2f7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        select, input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 12px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #27ae60;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .mandi-card {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌾 Smart Crop Selling Advisor</h1>
+
+<div class="card">
+    <div class="grid">
+
+        <select id="commodity">
+            <option>Arhar(Tur/Red Gram)(Whole)</option>
+            <option>Bajra(Pearl Millet/Cumbu)</option>
+            <option>Bengal Gram(Gram)(Whole)</option>
+            <option>Cotton</option>
+            <option>Jowar(Sorghum)</option>
+            <option>Maize</option>
+            <option>Paddy(Common)</option>
+            <option>Ragi(Finger Millet)</option>
+            <option>Safflower</option>
+            <option>Soyabean</option>
+            <option>Sunflower</option>
+            <option>Wheat</option>
+        </select>
+
+        <input type="date" id="date">
+
+        <select id="arrival">
+            <option value="1000">Low Supply</option>
+            <option value="3000">Medium Supply</option>
+            <option value="5000">High Supply</option>
+        </select>
+
+        <input type="number" id="transport" placeholder="Transport Cost (₹)">
+
+        <button onclick="getPrediction()">Analyze Market</button>
+
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<div class="card">
+    <h3>📊 Market Trend</h3>
+    <canvas id="priceChart"></canvas>
+</div>
+
+<div class="card">
+    <h3>🏬 Best Mandis</h3>
+    <div id="mandiResults"></div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
